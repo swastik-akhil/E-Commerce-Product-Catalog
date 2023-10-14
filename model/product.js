@@ -1,5 +1,5 @@
-const mongooose =  require("mongoose");
-const productSchema = new mongooose.Schema({
+const mongoose =  require("mongoose");
+const productSchema = new mongoose.Schema({
 	pid : {
 		type : String,
 		unique : true,
@@ -25,4 +25,4 @@ const productSchema = new mongooose.Schema({
 
 })
 
-module.exports = mongooose.model("Product", productSchema);
+module.exports = mongoose.model("Product", productSchema);
