@@ -4,7 +4,7 @@ const express = require("express");
 const router = express.Router();
 
 
-router.route("/products")
+router.route("/")
 	.get(getAllProducts)
 	.post(addProduct)
 	.delete(deleteAllProducts)
