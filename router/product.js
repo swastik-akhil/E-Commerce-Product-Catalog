@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
 
-const {getProduct} = require("../controllers/product");
+const {getProduct, replaceProduct} = require("../controllers/product");
 
-router.route("/:pid")
+router.route("/")
 	.get(getProduct)
-// 	.put()
+	.put(replaceProduct)
 // 	.patch()
 // 	.delete()
 //

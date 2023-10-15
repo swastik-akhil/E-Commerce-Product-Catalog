@@ -14,7 +14,7 @@ app.use(express.json());
 //routes
 
 const productsRouter = require("./router/prodcuts");
-app.use("/api/v1/products/", productsRouter);
+app.use("/api/v1/products", productsRouter);
 
 const productRouter = require("./router/product");
 app.use("/api/v1/product", productRouter);
