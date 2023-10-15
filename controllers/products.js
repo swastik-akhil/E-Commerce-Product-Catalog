@@ -2,7 +2,7 @@ const Product = require("../model/product");
 
 async function getAllProducts(req,res){
 	try{
-		const products = await Product.findOne({});
+		const products = await Product.find({});
 		if ( !products) {
 			console.log({"msg": "no product found"});
 			return res.status(404).json({"msg": "no product found"});

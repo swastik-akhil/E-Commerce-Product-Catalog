@@ -93,5 +93,61 @@ async function deleteProduct(req,res){
 	}
 }
 
+async function sortNProducts(req,res){
 
-module.exports = {getProduct, replaceProduct,updateProduct, deleteProduct};
+	try{
+		const number = req.query.number;
+		if(!number){return res.status(400).json({"msg" : "Number is missing"})}
+
+		const allProducts = await Product.find({});
+		if(!allProducts){return res.status(400).json({"msg" : "No products found"})}
+
+
+		allProducts.sort((a,b) => b.price - a.price);
+		console.log(allProducts);
+		let result = [];
+		for(let i=0; i<number; i++){
+			result.push(allProducts[i])
+		}
+		res.status(200).json({"number of most expensive products" : number, "products" : result})
+	}
+	catch(err){
+		errorHandler(res,err);
+	}
+}
+
+async function getNotAvailableProducts(req,res){
+	try{
+		const allProducts = await Product.find({});
+		if ( !allProducts) {
+			return res.status(400).json({"msg": "No products found"})
+		}
+
+		let result = [];
+		for (let i = 0; i < allProducts.length; ++i) {
+			if (allProducts[i].inventory === 0) {
+				result.push(allProducts[i])
+			}
+		}
+		if (result.length === 0) {
+			return res.status(400).json({"msg": "No products found"})
+		}
+		res.status(200).json({"products": result})
+	}
+	catch(err){
+		errorHandler(res,err);
+	}
+}
+
+async function buyProduct(req,res){
+	const pid = req.query.pid;
+	if(!pid){return res.status(400).json({"msg" : "Product id is missing"})}
+	const product = await Product.findOne({pid: pid});
+	if(!product){return res.status(400).json({"msg" : "product not found"})}
+	if(product.inventory === 0){return res.status(400).json({"msg" : "product not available"})}
+	product.inventory -= 1;
+	await product.save();
+	return res.status(200).json({"msg" : "product bought successfully", "product" : product})
+}
+
+module.exports = {getProduct, replaceProduct,updateProduct, deleteProduct, sortNProducts,getNotAvailableProducts, buyProduct};
