@@ -1,13 +1,13 @@
 const express = require("express");
 const router = express.Router();
 
-const {getProduct, replaceProduct} = require("../controllers/product");
+const {getProduct, replaceProduct, updateProduct, deleteProduct} = require("../controllers/product");
 
 router.route("/")
 	.get(getProduct)
 	.put(replaceProduct)
-// 	.patch()
-// 	.delete()
+	.patch(updateProduct)
+	.delete(deleteProduct)
 //
 // router.route("/expensive")
 // 	.get()
