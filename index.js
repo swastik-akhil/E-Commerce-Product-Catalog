@@ -21,6 +21,7 @@ app.use("/api/v1/product", productRouter);
 
 
 
+
 app.listen(PORT, ()=>{
 	console.log(`Server is running at port ${PORT}`);
 })
