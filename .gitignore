@@ -1,4 +1,8 @@
 node_modules
 .idea
+.vscode
 .env
 temp.js
+nodemon.json
+views
+package-lock.json

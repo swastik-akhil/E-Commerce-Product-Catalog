@@ -18,4 +18,5 @@ router.route("/not_available")
 router.route("/buy")
 	.get(buyProduct)
 
+
 module.exports = router;

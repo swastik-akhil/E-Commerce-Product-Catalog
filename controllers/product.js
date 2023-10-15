@@ -22,17 +22,23 @@ async function replaceProduct(req,res){
 	try{
 		let pid = req.query.pid;
 		if(!pid){return res.status(400).json({"msg" : "Product id is missing"})}
-		let replaceToPid = req.query.replaceToPid;
+		let body = req.body;
 
 		let oldProduct = await Product.findOne({pid: pid});
 		if ( !oldProduct) {
 			return res.status(400).json({"msg": "product not found"})
 		}
 
-		let newProduct = await Product.findOne({pid: replaceToPid});
-		if ( !newProduct) {
-			return res.status(400).json({"msg": "product you want to replace not found"})
-		}
+		const newProduct = await Product.create({
+			name : body.name,
+			description : body.description,
+			price : body.price,
+			inventory : body.inventory
+		})
+
+		if(!newProduct){return res.status(400).json({"msg" : "error occurred, new product not created"})}
+
+		if(newProduct.name===oldProduct.name){return res.status(400).json({"msg" : "product name is same"})}
 
 		oldProduct.pid = newProduct.pid;
 		oldProduct.name = newProduct.name;
@@ -40,7 +46,7 @@ async function replaceProduct(req,res){
 		oldProduct.price = newProduct.price;
 		oldProduct.inventory = newProduct.inventory;
 
-		const deleted = await Product.findOneAndDelete({pid: replaceToPid})
+		const deleted = await Product.findOneAndDelete({pid: newProduct.pid})
 		await oldProduct.save();
 
 		return res.status(200).json({"msg" : "entries changed" })
@@ -63,7 +69,7 @@ async function updateProduct(req,res){
 			product.description = req.body.description;
 		}
 		if(req.body.price){
-			if(req.body.price === 0){return res.status(400).json({"msg" : "Not a valid price"})}
+			if(req.body.price <= 0){return res.status(400).json({"msg" : "Not a valid price"})}
 			product.price = req.body.price;
 		}
 		if(req.body.inventory){
@@ -86,7 +92,7 @@ async function deleteProduct(req,res){
 		const product = await Product.findOne({pid : pid});
 		if(!product){return res.status(400).json({"msg" : "product not found"})}
 		const deleted = await Product.findOneAndDelete({pid : pid});
-		return res.status(200).json({"msg" : "entry deleted successfully"});
+		return res.status(200).json({"msg" : "entry deleted successfully", "deletedProduct" : "deleted"})
 	}
 	catch(err){
 		errorHandler(res,err);
@@ -98,6 +104,7 @@ async function sortNProducts(req,res){
 	try{
 		const number = req.query.number;
 		if(!number){return res.status(400).json({"msg" : "Number is missing"})}
+		if(number<=0){return res.status(400).json({"msg" : "Not a valid number"})}
 
 		const allProducts = await Product.find({});
 		if(!allProducts){return res.status(400).json({"msg" : "No products found"})}
@@ -140,14 +147,28 @@ async function getNotAvailableProducts(req,res){
 }
 
 async function buyProduct(req,res){
-	const pid = req.query.pid;
-	if(!pid){return res.status(400).json({"msg" : "Product id is missing"})}
-	const product = await Product.findOne({pid: pid});
-	if(!product){return res.status(400).json({"msg" : "product not found"})}
-	if(product.inventory === 0){return res.status(400).json({"msg" : "product not available"})}
-	product.inventory -= 1;
-	await product.save();
-	return res.status(200).json({"msg" : "product bought successfully", "product" : product})
+	try{
+		const pid = req.query.pid;
+		if ( !pid) {
+			return res.status(400).json({"msg": "Product id is missing"})
+		}
+		const product = await Product.findOne({pid: pid});
+		if ( !product) {
+			return res.status(400).json({"msg": "product not found"})
+		}
+		if (product.inventory === 0) {
+			return res.status(400).json({"msg": "product not available"})
+		}
+		product.inventory -= 1;
+		await product.save();
+		return res.status(200).json({"msg" : "product bought successfully", "product" : product})
+	}
+	catch(err){
+		errorHandler(res,err);
+	}
+
 }
+
+
 
 module.exports = {getProduct, replaceProduct,updateProduct, deleteProduct, sortNProducts,getNotAvailableProducts, buyProduct};
