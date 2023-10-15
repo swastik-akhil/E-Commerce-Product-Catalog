@@ -6,8 +6,8 @@
   "scripts": {
     "start": "nodemon index.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["BRL-Task-2"],
+  "author": "Akhil Agrawal",
   "license": "ISC",
   "devDependencies": {
     "nodemon": "^3.0.1"

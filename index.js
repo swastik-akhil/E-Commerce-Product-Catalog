@@ -3,6 +3,14 @@ const app = express();
 const router = require("./router/prodcuts");
 require("dotenv").config();
 const {PORT} = process.env;
-console.log(PORT)
 
+//db Connection
+const {dbConnect} = require("./dbConnection")
+dbConnect();
+
+//middlewares
+app.use(express.json());
+
+
+console.log(PORT)
 // app.listen()
