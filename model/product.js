@@ -27,7 +27,6 @@ const productSchema = new mongoose.Schema({
 
 productSchema.pre("save", function(next){
 	this.pid = this._id.toString();
-	console.log(this.pid)
 	next();
 })
 

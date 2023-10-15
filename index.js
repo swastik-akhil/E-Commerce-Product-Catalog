@@ -16,7 +16,11 @@ app.use(express.json());
 const productsRouter = require("./router/prodcuts");
 app.use("/api/v1/products/", productsRouter);
 
-console.log(PORT)
+const productRouter = require("./router/product");
+app.use("/api/v1/product", productRouter);
+
+
+
 app.listen(PORT, ()=>{
 	console.log(`Server is running at port ${PORT}`);
 })
