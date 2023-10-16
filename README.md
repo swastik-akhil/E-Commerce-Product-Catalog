@@ -22,10 +22,10 @@ This simple backend application uses Node.js, Express and MongoDB database and c
 
 ## Run Locally
 
-Clone the project
+Clone the project (dev branch)
 
 ```bash
-  git clone https://github.com/swastik-akhil/swastik-akhil-E-commerce-Product-Catalog.git
+  git clone -b dev https://github.com/swastik-akhil/E-Commerce-Product-Catalog.git
 ```
 
 
