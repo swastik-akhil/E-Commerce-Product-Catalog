@@ -25,7 +25,7 @@ This simple backend application uses Node.js, Express and MongoDB database and c
 Clone the project
 
 ```bash
-  git clone https://github.com/swastik-akhil/swastik-akhil-Node-Express-MongoDB-User-CRUD-API.git
+  git clone https://github.com/swastik-akhil/swastik-akhil-E-commerce-Product-Catalog.git
 ```
 
 
