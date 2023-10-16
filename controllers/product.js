@@ -92,7 +92,7 @@ async function deleteProduct(req,res){
 		const product = await Product.findOne({pid : pid});
 		if(!product){return res.status(400).json({"msg" : "product not found"})}
 		const deleted = await Product.findOneAndDelete({pid : pid});
-		return res.status(200).json({"msg" : "entry deleted successfully", "deletedProduct" : "deleted"})
+		return res.status(200).json({"msg" : "entry deleted successfully" })
 	}
 	catch(err){
 		errorHandler(res,err);
