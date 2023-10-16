@@ -1,6 +1,7 @@
 # E-Commerce Product Catalog
 
-This backend application, built with Node.js, Express, and MongoDB, serves as a robust foundation for your e-commerce app.
+This backend application, crafted with simplicity in mind using Node.js, Express, and MongoDB, forms a strong foundation for your e-commerce app. Designed for ease of use, this API provides essential functionalities for managing products, categories, and orders. It's a basic, user-friendly solution, perfect for those starting out in the world of e-commerce development. Dive in, explore the code, and adapt it to suit your needs seamlessly.
+
 
 ## Authors
 
