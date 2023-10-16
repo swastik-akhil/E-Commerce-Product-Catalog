@@ -10,9 +10,13 @@ This simple backend application uses Node.js, Express and MongoDB database and c
 
 [@swastik-akhil](https://www.github.com/swastik-akhil) 
 
+## Documentation
+
+[Refer Here](https://documenter.getpostman.com/view/29198187/2s9YR6aZLj)
+
 ## Deployed Link
 
-https://brl-task-2.onrender.com/api/v1/
+[Deployed URL](https://brl-task-2.onrender.com/api/v1/)
 
 
 
