@@ -1,58 +1,53 @@
+# E-Commerce Product Catalog
 
-#  E-Commerce-Product-Catalog
-
-This simple backend application uses Node.js, Express and MongoDB database and can be used in an e-commerce app.
-
-
-
+This backend application, built with Node.js, Express, and MongoDB, serves as a robust foundation for your e-commerce app.
 
 ## Authors
 
-[@swastik-akhil](https://www.github.com/swastik-akhil) 
+[@swastik-akhil](https://github.com/swastik-akhil)
 
 ## Documentation
 
-[Refer Here](https://documenter.getpostman.com/view/29198187/2s9YR6aZLj)
+Explore detailed documentation [here](https://documenter.getpostman.com/view/29198187/2s9YR6aZLj).
 
 ## Deployed Link
 
-[Deployed URL](https://brl-task-2.onrender.com/api/v1/)
+Visit the deployed application [here](https://brl-task-2.onrender.com/api/v1/products).
 
+## Getting Started
 
+To run this project locally, follow these steps:
 
-## Run Locally
+1. Clone the project (dev branch):
 
-Clone the project (dev branch)
+    ```bash
+    git clone -b dev https://github.com/swastik-akhil/E-Commerce-Product-Catalog.git
+    ```
 
-```bash
-  git clone -b dev https://github.com/swastik-akhil/E-Commerce-Product-Catalog.git
-```
+2. Install dependencies:
 
+    ```bash
+    npm install
+    ```
 
-Install dependencies
+3. Start the server:
 
-```bash
-  npm install
-```
-
-Start the server
-
-```bash
-  npm start
-```
-
+    ```bash
+    npm start
+    ```
 
 ## Tech Stack
 
-**Server:** Node, Express
-
-**Database:** MongoDB
+- **Server**: Node, Express
+- **Database**: MongoDB
 
 ## Environment Variables
 
-To run this project, you will need to add the following environment variables to your .env file:-
+To run this project, you need to add the following environment variables to your `.env` file:
 
-`PORT`
+- `PORT`: Specify the port for the server.
+- `MONGODB_URL`: Provide the MongoDB connection URL.
 
-`MONGOBD_URL`
+Feel free to customize and extend this backend for your specific e-commerce needs.
 
+Happy coding!
