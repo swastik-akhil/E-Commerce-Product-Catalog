@@ -3,11 +3,11 @@ const app = express();
 const router = require("./router/prodcuts");
 require("dotenv").config();
 const {PORT} = process.env;
-const path = require("path");
+// const path = require("path");
 
-app.set('view engine', 'ejs');
 // app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
+// app.set('view engine', 'ejs');
+// app.set('views', path.join(__dirname, 'views'));
 
 //db Connection
 const {dbConnect} = require("./dbConnection")

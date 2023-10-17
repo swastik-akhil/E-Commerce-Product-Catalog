@@ -29,11 +29,14 @@ async function replaceProduct(req,res){
 			return res.status(400).json({"msg": "product not found"})
 		}
 
+		if(!body.name || !body.description || !body.price || !body.inventory || !body.category){return res.status(400).json({"msg" : "All fields are required"})}
+
 		const newProduct = await Product.create({
 			name : body.name,
 			description : body.description,
 			price : body.price,
-			inventory : body.inventory
+			inventory : body.inventory,
+			category : body.category
 		})
 
 		if(!newProduct){return res.status(400).json({"msg" : "error occurred, new product not created"})}

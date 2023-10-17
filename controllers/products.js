@@ -10,7 +10,7 @@ async function getAllProducts(req,res){
 		const products = await Product.find({});
 		if ( !products) {
 			console.log({"msg": "no product found"});
-			return res.status(404).json({"msg": "no product found"});
+			return res.status(404).json({"msg": "no product found in datbase"});
 		}
 		return res.status(200).json({"All Products": products, "msg": "All products found", "total Products": products.length});
 		// return res.status(200).render("allProducts", {"products": products})
